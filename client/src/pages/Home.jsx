@@ -7,8 +7,18 @@ import { AppContext } from "../context/AppContext.jsx";
 
 export default function Home() {
   const navigate = useNavigate();
-  const { code, setCode, language, setLanguage, diagnosis, setDiagnosis } =
-    useContext(AppContext);
+  const {
+    code,
+    setCode,
+    language,
+    setLanguage,
+    diagnosis,
+    setDiagnosis,
+    loading,
+    setLoading,
+    error,
+    setError,
+  } = useContext(AppContext);
 
   const handleSubmit = async () => {
     if (!code.trim()) {
