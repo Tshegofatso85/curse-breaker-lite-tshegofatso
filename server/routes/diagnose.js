@@ -1,5 +1,5 @@
 import express from "express";
-import { mockData } from "../data/mockData.js";
+import mockData from "../data/mockData.js";
 
 const router = express.Router();
 
