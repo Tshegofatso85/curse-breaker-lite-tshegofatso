@@ -45,6 +45,16 @@ export default function Home() {
     }
   };
 
+  const handleCodeChange = (e) => {
+    const value = e.target.value;
+
+    const lines = value.split("\n");
+
+    if (lines.length <= 200) {
+      setCode(value);
+    }
+  };
+
   return (
     <Layout>
       <div className="mx-auto flex max-w-5xl flex-col items-center px-6 py-12">
@@ -60,11 +70,15 @@ export default function Home() {
           name="code"
           id="code"
           value={code}
-          onChange={(e) => setCode(e.target.value)}
+          onChange={handleCodeChange}
           rows={16}
           placeholder="Paste broken code snippet here (max 200 lines)..."
           className="mb-6 w-full rounded-xl border border-blue-500/30 bg-slate-900 p-5 font-mono text-sm text-white outline-none focus:border-blue-400"
         />
+
+        <p className="mt-2 text-right text-sm text-gray-400">
+          {code.split("\n").length} / 200 lines
+        </p>
 
         <div className="mb-8 w-full">
           <label className="mb-2 block text-gray-300">Select Language</label>
