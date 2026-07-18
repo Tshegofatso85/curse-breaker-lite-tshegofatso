@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import Layout from "../components/Layout.jsx";
 import api from "../services/api.js";
 import { AppContext } from "../context/AppContext.jsx";
+import Card from "../components/Card.jsx";
 
 export default function Home() {
   const navigate = useNavigate();
@@ -57,12 +58,14 @@ export default function Home() {
 
   return (
     <Layout>
-      <div className="mx-auto flex max-w-5xl flex-col items-center px-6 py-12">
-        <h1 className="mb-3 text-5xl font-bold text-blue-400">
-          Curse Breaker Lite
+      <Card>
+        <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight">
+          <span className="text-white">Curse</span>{" "}
+          <span className="text-blue-400">Breaker</span>{" "}
+          <span className="text-white">Lite</span>
         </h1>
 
-        <p className="mb-10 text-center text-gray-400">
+        <p className="mb-10 mt-4 text-center text-gray-400">
           Paste broken code and let the Curse Breaker reveal any hidden bugs
         </p>
 
@@ -81,19 +84,29 @@ export default function Home() {
         </p>
 
         <div className="mb-8 w-full">
-          <label className="mb-2 block text-gray-300">Select Language</label>
-
-          <select
-            name="language"
-            id="language"
-            value={language}
-            onChange={(e) => setLanguage(e.target.value)}
-            className="w-full rounded-xl border border-blue 500/30 bg-slate-900 p-3 text-white"
+          <label
+            htmlFor="language"
+            className="mb-3 block text-sm font-medium uppercase tracking-wider text-slate-400"
           >
-            <option value="javascript">Javascript</option>
-            <option value="python">Python</option>
-            <option value="html">HTML / CSS</option>
-          </select>
+            Programming Language
+          </label>
+
+          <div className="relative">
+            <select
+              id="language"
+              value={language}
+              onChange={(e) => setLanguage(e.target.value)}
+              className="w-full appearance-none rounded-xl border border-slate-700 bg-slate-950 px-4 py-3 pr-10 text-white shadow-lg shadow-blue-500/5 transition-all duration-200 outline-none hover:border-blue-500/50 focus:border-blue-500 focus:ring-2 focus:ring-blue-500/20"
+            >
+              <option value="javascript">JavaScript</option>
+              <option value="python">Python</option>
+              <option value="html">HTML / CSS</option>
+            </select>
+
+            <div className="pointer-events-none absolute inset-y-0 right-4 flex items-center text-slate-400">
+              ▼
+            </div>
+          </div>
         </div>
 
         {error && (
@@ -105,11 +118,11 @@ export default function Home() {
         <button
           onClick={handleSubmit}
           disabled={loading}
-          className="rounded-xl bg-blue-600 px-10 py-4 font-semibold transition hover:bg-blue-500 disabled:opacity-50"
+          className="px-6 py-3 rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 font-semibold transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-blue-500/40 active:scale-95"
         >
           {loading ? "Breaking the Curse..." : "BREAK THE CURSE"}
         </button>
-      </div>
+      </Card>
     </Layout>
   );
 }

@@ -6,6 +6,7 @@ import IssueCard from "../components/IssueCard";
 import { AppContext } from "../context/AppContext";
 import CodeViewer from "../components/CodeViewer";
 import BackButton from "../components/BackButton";
+import Card from "../components/Card";
 
 export default function Diagnosis() {
   const { diagnosis, language } = useContext(AppContext);
@@ -23,7 +24,7 @@ export default function Diagnosis() {
 
   return (
     <Layout>
-      <div className="mx-auto max-w-5xl px-6 py-12">
+      <Card>
         <BackButton />
         <h1 className="mb-3 text-4xl font-bold text-blue-400">
           Diagnosis Complete
@@ -59,12 +60,12 @@ export default function Diagnosis() {
         <div className="mt-10 flex justify-end">
           <button
             onClick={() => navigate("/solution")}
-            className="rounded-xl bg-blue-600 px-8 py-3 font-semibold hover:bg-blue-500"
+            className="px-6 py-3 rounded-xl bg-gradient-to-r from-blue-600 to-purple-600 font-semibold transition-all duration-300 hover:scale-105 hover:shadow-lg hover:shadow-blue-500/40 active:scale-95"
           >
             View Fixed Code
           </button>
         </div>
-      </div>
+      </Card>
     </Layout>
   );
 }

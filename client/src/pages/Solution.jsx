@@ -5,6 +5,7 @@ import Layout from "../components/Layout";
 import CodeViewer from "../components/CodeViewer";
 import { AppContext } from "../context/AppContext";
 import BackButton from "../components/BackButton";
+import Card from "../components/Card";
 
 import {
   FiCopy,
@@ -68,7 +69,7 @@ export default function Solution() {
 
   return (
     <Layout>
-      <div className="mx-auto max-w-6xl px-6 py-12">
+      <Card>
         <BackButton />
         <h1 className="text-4xl font-bold text-blue-400">
           Curse Successfully Broken
@@ -120,7 +121,7 @@ export default function Solution() {
             </ul>
           </div>
         )}
-      </div>
+      </Card>
       <div className="mt-12 flex justify-center">
         <button
           onClick={handleNewCode}
