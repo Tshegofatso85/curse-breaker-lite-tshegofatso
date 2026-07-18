@@ -13,7 +13,6 @@ export default function Home() {
     setCode,
     language,
     setLanguage,
-    diagnosis,
     setDiagnosis,
     loading,
     setLoading,

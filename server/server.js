@@ -10,7 +10,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.get("/", (req, res) => {
+app.get("/", (_, res) => {
   res.json({ message: "Curse Breaker Lite API is running!" });
 });
 
