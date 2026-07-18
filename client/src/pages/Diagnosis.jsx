@@ -5,6 +5,7 @@ import Layout from "../components/Layout";
 import IssueCard from "../components/IssueCard";
 import { AppContext } from "../context/AppContext";
 import CodeViewer from "../components/CodeViewer";
+import BackButton from "../components/BackButton";
 
 export default function Diagnosis() {
   const { diagnosis, language } = useContext(AppContext);
@@ -19,11 +20,11 @@ export default function Diagnosis() {
   const { issues, explanations } = diagnosis.data;
 
   const originalCode = diagnosis.originalCode;
-  //   console.log(diagnosis.data);
 
   return (
     <Layout>
       <div className="mx-auto max-w-5xl px-6 py-12">
+        <BackButton />
         <h1 className="mb-3 text-4xl font-bold text-blue-400">
           Diagnosis Complete
         </h1>
