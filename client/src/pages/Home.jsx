@@ -1,10 +1,12 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import Layout from "../components/Layout.jsx";
 import api from "../services/api.js";
 import { AppContext } from "../context/AppContext.jsx";
 import Card from "../components/Card.jsx";
+import FloatingSparkles from "../components/FloatingSparkles.jsx";
+import LoadingOverlay from "../components/LoadingOverlay.jsx";
 
 export default function Home() {
   const navigate = useNavigate();
@@ -27,13 +29,33 @@ export default function Home() {
     }
 
     setError("");
+
+    setSparkleBurst(true);
+
+    await new Promise((resolve) => setTimeout(resolve, 700));
+
+    setSparkleBurst(false);
+
     setLoading(true);
+
+    // Record when loading starts
+    const startTime = Date.now();
 
     try {
       const response = await api.post("/diagnose", {
         code,
         language,
       });
+
+      // Ensure loading lasts at least 2.5 seconds
+      const elapsed = Date.now() - startTime;
+      const minimumLoadingTime = 3500;
+
+      if (elapsed < minimumLoadingTime) {
+        await new Promise((resolve) =>
+          setTimeout(resolve, minimumLoadingTime - elapsed)
+        );
+      }
 
       setDiagnosis(response.data);
       navigate("/diagnosis");
@@ -55,8 +77,12 @@ export default function Home() {
     }
   };
 
+  const [sparkleBurst, setSparkleBurst] = useState(false);
+
   return (
     <Layout>
+      {loading && <LoadingOverlay />}
+      <FloatingSparkles count={sparkleBurst ? 40 : 14} />
       <Card>
         <h1 className="text-4xl md:text-5xl font-extrabold tracking-tight">
           <span className="text-white">Curse</span>{" "}
