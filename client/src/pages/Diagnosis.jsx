@@ -31,7 +31,7 @@ export default function Diagnosis() {
         transition={{ duration: 0.4 }}
       >
         <Card>
-          <BackButton />
+          <BackButton to="/" />
           <motion.h1
             className="mb-3 text-4xl font-bold text-blue-400"
             initial={{ opacity: 0, y: -20 }}

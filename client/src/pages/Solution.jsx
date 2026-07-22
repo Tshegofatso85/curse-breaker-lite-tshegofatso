@@ -76,7 +76,7 @@ export default function Solution() {
         transition={{ duration: 0.45 }}
       >
         <Card>
-          <BackButton />
+          <BackButton to="/diagnosis" />
           <motion.h1
             className="text-4xl font-bold text-blue-400 drop-shadow-[0_0_20px_rgba(59,130,246,0.6)]"
             initial={{ opacity: 0, y: -25 }}
